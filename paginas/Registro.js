@@ -27,7 +27,8 @@ export default class Registro extends Component {
     domicilio: "",
     telefono: "",
     email: "",
-    password:""
+    password:"",
+    avatar:null
   }
 
   handleSignUp = () =>{
@@ -42,7 +43,6 @@ export default class Registro extends Component {
   }
 
   render() {
-    const navegar = this.props.navigation;
     return (
       <Container>
         <Header className="component-header">

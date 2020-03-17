@@ -7,34 +7,31 @@ export default class Ubicacion extends Component {
   render() {
     const navegar = this.props.navigation;
     return (
-      <Container>
-        <Header/>
-        <Content>
-        <Card>
-        <Text>Aquí no funciona nada</Text>
-        </Card>
-        </Content>
-        <Footer>
-          <FooterTab>
-            <Button vertical onPress={() => { navegar.navigate('Principal')}}>
-              <Icon type="Foundation" name="home" />
-              <Text>Home</Text>
-            </Button>
-            <Button vertical onPress={() => { navegar.navigate('Perfil')}}>
-              <Icon type="Entypo" name="baidu" />
-              <Text>Perfil</Text>
-            </Button>
-            <Button vertical onPress={() => { navegar.navigate('Ubicacion')}}>
-              <Icon  type="Foundation" name="map" />
-              <Text>Ubicación</Text>
-            </Button>
-            <Button vertical onPress={() => { navegar.navigate('Tiempo')}}>
-              <Icon  type="MaterialCommunityIcons" name="weather-partlycloudy" />
-              <Text>Tiempo</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
+      <View>
+        <CardItem>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.header}>
+                <TouchableOpacity>
+                    <Ionicons name="md-arrow-back" size={24} color="#08D90B"></Ionicons>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={{fontWeight:"500"}}>Post</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.inputContainer}>
+                <Image source={require("./../assets/imgs/1.png")} style={styles.avatar}/>
+                <TextInput 
+                autoFocus={true} 
+                multiline={true} 
+                numberOfLines={4} 
+                style={{flex: 1}}
+                placeholder="¿Qué está pasando?"
+                />
+            </View>
+    
+      </SafeAreaView>
+        </CardItem>
+      </View>
     );
   }
 }

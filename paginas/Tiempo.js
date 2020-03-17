@@ -6,9 +6,15 @@ import {StyleSheet, ImageBackground, Image, View} from 'react-native';
 export default class Tiempo extends Component {
   render() {
     return (
-      <View>
+      <Container>
+        <Header/>
+        <Content>
+        <Card>
         <Text>Tiempo</Text>
-      </View>
+        </Card>
+        </Content>
+        
+      </Container>
     );
   }
 }

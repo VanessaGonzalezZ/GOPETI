@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Footer, Image, FooterTab, Button, Icon, Text, Label, View } from 'native-base';
-import { Card, CardItem, Body, Input, Item } from 'native-base';
-import {StyleSheet, TextInput, TouchableOpacity, StatusBar, LayoutAnimation} from 'react-native';
+import { Button, Icon, Text, Card } from 'native-base';
+import {Input, Item } from 'native-base';
+import {Image, StyleSheet, View, LayoutAnimation, SafeAreaView, StatusBar} from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
 
 import {Ionicons} from '@expo/vector-icons';
 
 import * as firebase from 'firebase';
 
 export default class Login extends Component {
+
   state = {
     email: "",
     password: "",
@@ -27,30 +29,29 @@ export default class Login extends Component {
   render() {
     LayoutAnimation.easeInEaseOut();
     return (
-      <Container>
-      <Header>
-      <CardItem style={{backgroundColor:'#FFFF00'}}>
-            <Text style={{
-              color:'#000000', 
-              alignItems:'center', 
-              fontFamily:'sans-serif-medium'}}>GOPETI  </Text>
-            <Icon type='FontAwesome' name="paw" />
-            </CardItem>
-        </Header>
-        <Content padder contentContainerStyle = {misEstilos.content}>    
-        <Icon source={require("../assets/imgs/icono.png")}
-              style={{position:"absolute", bottom: -323, right: -225, 
-                      width:100, height:100}} />
-        <Card>
-            <CardItem header bordered> 
+      <SafeAreaView>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#E3FDF5', '#FFE6FA']}>
+      <StatusBar barStyle="light-content"></StatusBar>
+      <Image source={require("../assets/imgs/icono.png")} style={{position:'relative', height: 100, width:100, alignSelf:'center', marginTop:150}}></Image>
+      
+
+
+        <View padder contentContainerStyle = {misEstilos.content}>    
+        <View>
+            <View header bordered> 
               <Text style={misEstilos.lineText}>Bienvenido! Inicia sesión</Text>
-            </CardItem>
-            <CardItem>
+            </View>
+            <View>
               {this.state.errorMessage && <Text >{this.state.errorMessage}</Text>}
-            </CardItem>
-            <CardItem header bordered style={{alignContent:'center'}}>
-                <CardItem bordered>
-                    <Body>
+            </View>
+            <View header bordered style={{alignContent:'center', 
+            marginStart:15, 
+            marginEnd:15, 
+            marginTop:40}}>
+                <Card bordered style={{padding:25, borderRadius: 10}}>
                       <Item rounded style={{marginBottom:12}}>
                         <Input 
                         placeholder='Email' 
@@ -64,24 +65,20 @@ export default class Login extends Component {
                         onChangeText={password => this.setState({ password })} 
                         value={this.state.password}/>
                       </Item>
-                      <Item>
+                      <Item style={{alignSelf:'center'}}>
                       <Button success onPress={this.handleLogin}>
                         <Text>Login</Text>
                       </Button>
                       </Item>
-                    </Body>
-                </CardItem>
-            </CardItem>
-        </Card>
-        </Content>
-        <Footer>
-          <FooterTab>
-            <Button onPress={() =>this.props.navigation.navigate("Register")}>
+                </Card>
+            </View>
+        </View>
+        </View>
+            <Button style={{alignSelf:'center', marginTop: 40}} onPress={() =>this.props.navigation.navigate("Register")}>
                 <Text> Si no tienes una cuenta, ¡Registrate aquí! </Text>
             </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
+            </LinearGradient>
+      </SafeAreaView>
     );
   }
 }
@@ -90,6 +87,8 @@ const misEstilos = StyleSheet.create({
     content: {
       flex: 1,
       justifyContent: 'center',
+      marginHorizontal:40,
+      marginVertical:40
     },
     textCenter:{
       textAlign: 'center',
@@ -104,6 +103,8 @@ const misEstilos = StyleSheet.create({
     lineText:{
         textAlign: 'center',
         justifyContent:'center',
-        color: 'blue',
+        color: 'black',
+        marginTop:40,
+        fontWeight: '700'
     },
   });
